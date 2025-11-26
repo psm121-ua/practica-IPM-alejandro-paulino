@@ -52,7 +52,9 @@ Este juego tiene como objetivo:
 Asegúrate de tener todos los archivos en la misma carpeta.
 
 2. Crear y activar entorno virtual (recomendado)
+
 bash
+
 python -m venv venv
 
 #### Windows
