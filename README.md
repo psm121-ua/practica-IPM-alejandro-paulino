@@ -77,7 +77,7 @@ python app.py
 
 ## Flujo del Juego
 
-1. Selección de Dificultad
+#### 1. Selección de Dificultad
 
 FÁCIL: Velocidad reducida (×0.6)
 
@@ -85,7 +85,7 @@ MEDIO: Velocidad normal (×1.0)
 
 DIFÍCIL: Velocidad aumentada (×1.5)
 
-2. Selección de Duración
+#### 2. Selección de Duración
 
 30 SEGUNDOS: Partida rápida
 
@@ -93,13 +93,13 @@ DIFÍCIL: Velocidad aumentada (×1.5)
 
 90 SEGUNDOS: Partida larga
 
-3. Selección de Modo de Juego
+#### 3. Selección de Modo de Juego
 
 SOLO MANOS: Solo se usan las manos para interactuar
 
 CUERPO ENTERO: Se utilizan tanto manos como pies
 
-4. Desarrollo del Juego
+#### 4. Desarrollo del Juego
 
 Objetos que caen:
 
@@ -109,7 +109,7 @@ Objetos que caen:
 
 -Balones: Solo en modo "CUERPO ENTERO", se atrapan con cualquier pie
 
-Mecánica:
+#### Mecánica:
 
 -Los objetos caen desde la parte superior de la pantalla
 
