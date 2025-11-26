@@ -53,8 +53,7 @@ Asegúrate de tener todos los archivos en la misma carpeta.
 
 2. Crear y activar entorno virtual (recomendado)
 
-bash
-
+```bash
 python -m venv venv
 
 #### Windows
@@ -62,6 +61,7 @@ venv\Scripts\activate
 
 #### macOS/Linux
 source venv/bin/activate
+```
 
 3. Instalar dependencias
 bash
