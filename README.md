@@ -1,95 +1,183 @@
-# Falling Objects Pose Game
+## Juego Serio de Rehabilitación Controlado por Movimientos Corporales
 
-**Juego controlado por pose (MediaPipe + OpenCV)**
+Este proyecto es un juego serio desarrollado en Python que utiliza visión por computador (MediaPipe + OpenCV) para la interacción persona-máquina. Está diseñado con fines de rehabilitación física y evaluación de capacidades motoras.
 
-Este repositorio contiene un juego en Python donde objetos (manzanas, peras, balones) caen desde la parte superior de la cámara y el jugador los "atrapa" con las manos o pies usando los landmarks detectados por MediaPipe.
+## Propósito del Juego Serio
 
----
+Este juego tiene como objetivo:
 
-## Requisitos previos
+-Rehabilitación física: Mejorar la coordinación mano-ojo y el movimiento de extremidades
 
-* Python 3.8+ (recomendado 3.9 o 3.10)
-* Cámara Web funcionando (con permisos de acceso)
-* Paquetes Python:
+-Evaluación motora: Medir la capacidad de respuesta y precisión de movimientos
 
-  * `opencv-python` (OpenCV)
-  * `mediapipe` (la versión que incluya `mp.tasks` y `PoseLandmarker` — normalmente MediaPipe >= 0.10+)
-  * `numpy`
+-Estimulación cognitiva: Requiere toma de decisiones rápidas y coordinación
 
-Puedes instalar los paquetes con pip. Se incluye ejemplo de `requirements.txt` abajo.
+-Entretenimiento terapéutico: Hacer la rehabilitación más amena y motivadora
 
-### requirements.txt (sugerido)
+## Estructura del Proyecto
 
-```
-opencv-python>=4.5.5
-mediapipe>=1.0.0
-numpy>=1.19.0
-```
+text
+.
+├── 📂 __pycache__/          # Archivos cache de Python (no modificar)
+├── 📂 models/               # Modelos de MediaPipe descargados
+├── 🐍 app.py                # Código principal del juego
+├── 🍎 manzanas.png          # Imagen de manzanas para el juego
+├── 🍐 pera.png              # Imagen de peras para el juego
+├── ⚽ balon.png             # Imagen de balones para el juego
+├── ⚙️ config.py             # Configuración del proyecto
+├── 📥 download_models.py    # Script para descargar modelos
+├── 📖 README.md             # Este archivo
+├── 📋 requirements.txt      # Dependencias de Python
+└── .gitignore              # Archivos ignorados por Git
 
-Instalación rápida en un entorno virtual:
+## Requisitos del Sistema
 
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
+-Python 3.8 o superior
 
+-Cámara web funcionando
+
+-Sistema operativo: Windows, macOS o Linux
+
+## Instalación y Configuración
+
+1. Descargar todos los archivos del proyecto
+Asegúrate de tener todos los archivos en la misma carpeta.
+
+2. Crear y activar entorno virtual (recomendado)
+bash
+python -m venv venv
+
+#### Windows
+venv\Scripts\activate
+
+#### macOS/Linux
+source venv/bin/activate
+
+3. Instalar dependencias
+bash
 pip install -r requirements.txt
-```
 
----
+4. Descargar modelos de MediaPipe
+bash
+python download_models.py
+Nota: Si download_models.py no existe, el modelo se descargará automáticamente al ejecutar el juego por primera vez.
 
-## Imágenes/Assets
+## Cómo Ejecutar el Juego
 
-* Las imágenes `manzanas.png`, `pera.png` y `balon.png` están en la misma carpeta que el script en formato PNG.
-* El script redimensiona las imágenes a `100x100` (línea `target_size = (100,100)`).
-
----
-
-## Ejecución
-
-1. Asegúrate de activar el entorno virtual (si usaste uno).
-2. Ejecuta el script:
-
-```bash
+bash
 python app.py
-```
 
-### Flujo del juego
+## Flujo del Juego
 
-* Aparecerá una ventana de cámara con el menú inicial para seleccionar dificultad. Mantén la mano izquierda sobre la opción durante 1 segundo para confirmar.
+1. Selección de Dificultad
 
-  * `FACIL`, `MEDIO`, `DIFICIL` — esto ajusta la velocidad de los objetos (el multiplicador `speed_multiplier`).
-* Selecciona la duración: `30 SEG`, `60 SEG`, `90 SEG` del mismo modo.
-* Selecciona el modo: `SOLO MANOS` (solo uso de manos para atrapar frutas) o `CUERPO ENTERO` (se permiten pies para los balones).
-* El juego comenzará y verás el HUD con tiempo restante y puntos.
-* Cuando finalice el tiempo aparecerá la puntuación final. Presiona ENTER para reiniciar o ESC para salir.
+FÁCIL: Velocidad reducida (×0.6)
 
-### Controles
+MEDIO: Velocidad normal (×1.0)
 
-* `ESC` (tecla): salir del juego en cualquier menú o durante la partida.
-* `ENTER` (tecla): reiniciar después de terminar la partida.
-* Selecciones en menús: coloca la mano (derecha o izquierda) sobre el botón visual y mantenla 1s.
+DIFÍCIL: Velocidad aumentada (×1.5)
 
----
+2. Selección de Duración
 
-### Modelo Utilizado
+30 SEGUNDOS: Partida rápida
 
-* El modelo utilizado pertenece a la API moderna de MediaPipe (mp.tasks.vision) y se llama PoseLandmarker.
-Este modelo está basado en la arquitectura BlazePose, altamente optimizada para detección rápida y precisa del cuerpo humano.
+60 SEGUNDOS: Partida estándar
 
-* El Pose Landmarker detecta 33 puntos clave del cuerpo, incluyendo:
-    * Manos (muñecas y dedos)
-    * Pies (tobillos y dedos)
-    * Hombros, brazos y codos
-    * Caderas, rodillas y piernas
-    * Cabeza y torso
+90 SEGUNDOS: Partida larga
 
-* El juego utiliza estos puntos para:
-    1. Navegar por los menús moviendo la mano y manteniéndola sobre una opción.
-    2. Atraparlos objetos:
-        * Manzana → mano derecha
-        * Pera → mano izquierda
-        * Balón → pies (modo cuerpo entero)
+3. Selección de Modo de Juego
 
+SOLO MANOS: Solo se usan las manos para interactuar
+
+CUERPO ENTERO: Se utilizan tanto manos como pies
+
+4. Desarrollo del Juego
+
+Objetos que caen:
+
+-Manzanas: Deben atraparse con la mano derecha
+
+-Peras: Deben atraparse con la mano izquierda
+
+-Balones: Solo en modo "CUERPO ENTERO", se atrapan con cualquier pie
+
+Mecánica:
+
+-Los objetos caen desde la parte superior de la pantalla
+
+-El jugador debe mover sus extremidades para interceptarlos
+
+-Cada objeto atrapado suma 1 punto
+
+-El tiempo restante y puntuación se muestran en tiempo real
+
+## Controles
+
+-Navegación por menús: Colocar la mano izquierda sobre la opción deseada durante 1 segundo
+
+-Durante el juego: Mover manos y pies para atrapar objetos
+
+-ESC: Salir del juego en cualquier momento
+
+-ENTER: Reiniciar después de terminar una partida
+
+## Tecnologías Utilizadas
+
+MediaPipe Pose Landmarker: Detección de 33 puntos corporales en tiempo real
+
+OpenCV: Procesamiento de video y visualización
+
+NumPy: Cálculos matemáticos y detección de colisiones
+
+## Modelo de Detección Corporal
+
+El juego utiliza MediaPipe Pose que detecta 33 puntos clave del cuerpo:
+
+-Manos: Muñecas (puntos 15,17,19,21 y 16,18,20,22)
+
+-Piernas: Tobillos, rodillas, caderas (puntos 27,28,31,32)
+
+-Tronco: Caderas, hombros, cabeza
+
+-Pies: Tobillos y puntos de referencia inferiores
+
+## Aplicación en Salud y Rehabilitación
+
+Este juego serio puede utilizarse para:
+
+-Terapia ocupacional: Mejora de coordinación motora fina
+
+-Rehabilitación post-operatoria: Ejercicios controlados de extremidades
+
+-Prevención de fragilidad: Mantenimiento de capacidad motora en adultos mayores
+
+-Estimulación cognitivo-motora: Integración de decisión y movimiento
+
+## Estructura del Código Principal
+
+El archivo app.py contiene:
+
+-Configuración MediaPipe para detección de poses
+
+-Clase FallingObject para gestionar objetos que caen
+
+-Sistemas de menús interactivos (dificultad, duración, modo)
+
+-Loop principal del juego con detección de colisiones
+
+-Sistema de puntuación y temporización
+
+## Notas Técnicas
+
+-El juego requiere buena iluminación para una detección óptima
+
+-Se recomienda mantenerse a 2-3 metros de la cámara, donde se vea el cuerpo entero en caso de elegir la opción con pies.
+
+-La detección funciona mejor con ropa que contraste con el fondo
+
+-En caso de problemas de detección, verificar que la cámara tenga suficiente resolución
+
+-Los modelos se almacenan en la carpeta models/ después de la primera ejecución
+
+
+#### Desarrollado para la asignatura de Interacción Persona-Máquina - Universidad de Alicante por Paulino Sanchiz y Alejandro López
