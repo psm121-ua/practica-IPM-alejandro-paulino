@@ -16,19 +16,17 @@ Este juego tiene como objetivo:
 
 ## Estructura del Proyecto
 
-text
-.
-├── 📂 __pycache__/          # Archivos cache de Python (no modificar)
-├── 📂 models/               # Modelos de MediaPipe descargados
-├── 🐍 app.py                # Código principal del juego
-├── 🍎 manzanas.png          # Imagen de manzanas para el juego
-├── 🍐 pera.png              # Imagen de peras para el juego
-├── ⚽ balon.png             # Imagen de balones para el juego
-├── ⚙️ config.py             # Configuración del proyecto
-├── 📥 download_models.py    # Script para descargar modelos
-├── 📖 README.md             # Este archivo
-├── 📋 requirements.txt      # Dependencias de Python
-└── .gitignore              # Archivos ignorados por Git
+-__pycache__/          # Archivos cache de Python (no modificar)
+-models/               # Modelos de MediaPipe descargados
+-app.py                # Código principal del juego
+-manzanas.png          # Imagen de manzanas para el juego
+-pera.png              # Imagen de peras para el juego
+-balon.png             # Imagen de balones para el juego
+-config.py             # Configuración del proyecto
+-download_models.py    # Script para descargar modelos
+-README.md             # Este archivo
+-requirements.txt      # Dependencias de Python
+-.gitignore              # Archivos ignorados por Git
 
 ## Requisitos del Sistema
 
