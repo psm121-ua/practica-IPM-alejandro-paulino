@@ -64,19 +64,21 @@ source venv/bin/activate
 ```
 
 3. Instalar dependencias
-bash
+```bash
 pip install -r requirements.txt
+```
 
 4. Descargar modelos de MediaPipe
-bash
+```bash
 python download_models.py
+```
 Nota: Si download_models.py no existe, el modelo se descargará automáticamente al ejecutar el juego por primera vez.
 
 ## Cómo Ejecutar el Juego
 
-bash
+```bash
 python app.py
-
+```
 ## Flujo del Juego
 
 #### 1. Selección de Dificultad
